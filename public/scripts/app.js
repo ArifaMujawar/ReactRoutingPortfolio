@@ -1,75 +1,122 @@
 'use strict';
 
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var Counter = function (_React$Component) {
+    _inherits(Counter, _React$Component);
 
-var Person = function () {
-    function Person() {
-        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
-        var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    function Counter(props) {
+        _classCallCheck(this, Counter);
 
-        _classCallCheck(this, Person);
+        var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this, props));
 
-        this.name = name;
-        this.age = age;
-    }
-
-    _createClass(Person, [{
-        key: 'getDescription',
-        value: function getDescription() {
-            return this.name + ' is ' + this.age + ' year(s) old.';
-        }
-    }, {
-        key: 'getGreeting',
-        value: function getGreeting() {
-            return 'Hello, I\'m ' + this.name + '.';
-        }
-    }]);
-
-    return Person;
-}();
-
-var Traveler = function (_Person) {
-    _inherits(Traveler, _Person);
-
-    function Traveler(name, age, location) {
-        _classCallCheck(this, Traveler);
-
-        var _this = _possibleConstructorReturn(this, (Traveler.__proto__ || Object.getPrototypeOf(Traveler)).call(this, name, age));
-
-        _this.location = location;
+        _this.handleAddOne = _this.handleAddOne.bind(_this);
+        _this.handleMinusOne = _this.handleMinusOne.bind(_this);
+        _this.handleReset = _this.handleReset.bind(_this);
+        _this.state = {
+            count: 0
+        };
         return _this;
     }
 
-    _createClass(Traveler, [{
-        key: 'hasLocation',
-        value: function hasLocation() {
-            return !!this.location;
+    _createClass(Counter, [{
+        key: 'handleAddOne',
+        value: function handleAddOne() {
+            this.setState(function (prevState) {
+                return {
+                    count: prevState.count + 1
+                };
+            });
         }
     }, {
-        key: 'getGreeting',
-        value: function getGreeting() {
-            var greeting = _get(Traveler.prototype.__proto__ || Object.getPrototypeOf(Traveler.prototype), 'getGreeting', this).call(this);
-
-            if (this.hasLocation()) {
-                greeting += 'I\'m visiting from ' + this.location + '.';
-            }
-            return greeting;
+        key: 'handleMinusOne',
+        value: function handleMinusOne() {
+            this.setState(function (prevState) {
+                return {
+                    count: prevState.count - 1
+                };
+            });
+        }
+    }, {
+        key: 'handleReset',
+        value: function handleReset() {
+            this.setState(function () {
+                return {
+                    count: 0
+                };
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                null,
+                React.createElement(
+                    'h1',
+                    null,
+                    'Count: ',
+                    this.state.count,
+                    ' '
+                ),
+                React.createElement(
+                    'button',
+                    { onClick: this.handleAddOne },
+                    '+1'
+                ),
+                React.createElement(
+                    'button',
+                    { onClick: this.handleMinusOne },
+                    '-1'
+                ),
+                React.createElement(
+                    'button',
+                    { onClick: this.handleReset },
+                    'reset'
+                )
+            );
         }
     }]);
 
-    return Traveler;
-}(Person);
+    return Counter;
+}(React.Component);
 
-var me = new Traveler('Arifa Mujawar', 25, 'bgm');
-console.log(me.getGreeting());
+ReactDOM.render(React.createElement(Counter, null), document.getElementById('app'));
 
-var you = new Traveler('sas');
-console.log(you.getGreeting());
+// let count = 0;
+// const addOne = () => {
+//     count++;
+//     renderCounterApp();
+//     console.log('addOne');
+// };
+// const minusOne = () => {
+//     count--;
+//     renderCounterApp();
+//     console.log('minusOne');
+// };
+// const reset = () => {
+//     count =0;
+//     renderCounterApp();
+//     console.log('reset');
+// };
+
+
+// const renderCounterApp = () => {
+//     const templateTwo = (
+//         <div>
+//             <h1>Count: {count}</h1>
+//             <button onClick = {addOne}> +1 </button>
+//             <button onClick = {minusOne}> -1 </button>
+//             <button onClick = {reset}> reset </button>
+//         </div>
+//     );
+//     ReactDOM.render(templateTwo,appRoot );
+// };
+
+// renderCounterApp();

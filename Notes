@@ -1,0 +1,48 @@
+// class structure in es6
+
+class className {
+    constructor(parameters){
+        this.parameter = parameter;
+    }
+    functions(){
+
+    }
+    ...
+}
+-class name should start with uppercase
+-constructor function is called when the instance is created.
+-To pass default values to constructor add it like this,
+ constructor(name ='Anonymous'){ }
+-Instead of using conacatenating operator, we can print anything in ES6 
+like `hello, I;m ${this.name}`;
+
+
+
+//create an instance of the class using new keyword
+//call their function using instance of that class with function name.
+
+
+/******/
+Creating sub Class 
+
+class subclassName extends ParentClassName{
+    constructor (parameters, new parameter){
+        super(parameters of parent class);
+        this.new parameter = parameter
+ }   
+}
+
+- !!Undefined returns false value.
+
+-React recognises class with
+
+--To add many components in one js file use like this
+const jsx = (
+    <div>
+        <Header />
+        <Action />
+        <Options />
+        <AddOption />
+    </div>
+);
+pass jsx to ReactDOM.render();
