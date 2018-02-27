@@ -46,3 +46,17 @@ const jsx = (
     </div>
 );
 pass jsx to ReactDOM.render();
+-To specify default values 
+Ex 
+className.defaultProps = {
+    options : []
+}
+
+
+Local Storage
+-stores only string data. Methods like localStorage.setItem(key, value),
+getItem(key),removeItem can be used.
+-localStorage.clear() clears all items
+-To store other data use JSON.Methods like stringify and parse can be used.
+-JSON.stringify converts JSON object or Java Script object to string.
+-JSON.parse converts a string to Java script object

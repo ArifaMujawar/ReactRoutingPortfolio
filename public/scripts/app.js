@@ -8,27 +8,67 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var VisibilityToggle = function (_React$Component) {
-    _inherits(VisibilityToggle, _React$Component);
+var Counter = function (_React$Component) {
+    _inherits(Counter, _React$Component);
 
-    function VisibilityToggle(props) {
-        _classCallCheck(this, VisibilityToggle);
+    function Counter(props) {
+        _classCallCheck(this, Counter);
 
-        var _this = _possibleConstructorReturn(this, (VisibilityToggle.__proto__ || Object.getPrototypeOf(VisibilityToggle)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this, props));
 
-        _this.handleToggleVisibility = _this.handleToggleVisibility.bind(_this);
+        _this.handleAddOne = _this.handleAddOne.bind(_this);
+        _this.handleMinusOne = _this.handleMinusOne.bind(_this);
+        _this.handleReset = _this.handleReset.bind(_this);
         _this.state = {
-            visibility: false
+            count: 0
         };
         return _this;
     }
 
-    _createClass(VisibilityToggle, [{
-        key: 'handleToggleVisibility',
-        value: function handleToggleVisibility() {
+    _createClass(Counter, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var stringCount = localStorage.getItem('count');
+            var count = parseInt(stringCount, 10);
+
+            if (!isNaN(count)) {
+                this.setState({ count: count });
+            }
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {}
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            if (prevState.count !== this.count) {
+                localStorage.setItem('count', this.state.count);
+            }
+        }
+    }, {
+        key: 'handleAddOne',
+        value: function handleAddOne() {
             this.setState(function (prevState) {
                 return {
-                    visibility: !prevState.visibility
+                    count: prevState.count + 1
+                };
+            });
+        }
+    }, {
+        key: 'handleMinusOne',
+        value: function handleMinusOne() {
+            this.setState(function (prevState) {
+                return {
+                    count: prevState.count - 1
+                };
+            });
+        }
+    }, {
+        key: 'handleReset',
+        value: function handleReset() {
+            this.setState(function () {
+                return {
+                    count: 0
                 };
             });
         }
@@ -41,58 +81,66 @@ var VisibilityToggle = function (_React$Component) {
                 React.createElement(
                     'h1',
                     null,
-                    'Visibility Toggle'
+                    'Count: ',
+                    this.state.count,
+                    ' '
                 ),
                 React.createElement(
                     'button',
-                    { onClick: this.handleToggleVisibility },
-                    ' ',
-                    this.state.visibility ? 'Hide Details' : 'Show Details'
+                    { onClick: this.handleAddOne },
+                    '+1'
                 ),
-                this.state.visibility && React.createElement(
-                    'div',
-                    null,
-                    React.createElement(
-                        'p',
-                        null,
-                        'Hey ! these are some details! '
-                    )
+                React.createElement(
+                    'button',
+                    { onClick: this.handleMinusOne },
+                    '-1'
+                ),
+                React.createElement(
+                    'button',
+                    { onClick: this.handleReset },
+                    'reset'
                 )
             );
         }
     }]);
 
-    return VisibilityToggle;
+    return Counter;
 }(React.Component);
-
-ReactDOM.render(React.createElement(VisibilityToggle, null), document.getElementById('app'));
-
-// let visibility =false;
-
-// const toggleContent = () => {
-//     visibility = !visibility;
-//     renderFunc();
+// Counter.defaultProps = {
+//     count : 11
 // };
 
 
-// const renderFunc = () => {
-//     const template = (
+ReactDOM.render(React.createElement(Counter, { count: 17 }), document.getElementById('app'));
+
+// let count = 0;
+// const addOne = () => {
+//     count++;
+//     renderCounterApp();
+//     console.log('addOne');
+// };
+// const minusOne = () => {
+//     count--;
+//     renderCounterApp();
+//     console.log('minusOne');
+// };
+// const reset = () => {
+//     count =0;
+//     renderCounterApp();
+//     console.log('reset');
+// };
+
+
+// const renderCounterApp = () => {
+//     const templateTwo = (
 //         <div>
-//             <h1>Visibility Toggle</h1>
-//             <button onClick={toggleContent}>
-//                 {visibility ? 'Hide Details' : 'Show Details' }
-//              </button>
-//              {visibility && (
-//                  <div>
-//                     <p>Hey ! these are some details! </p>
-//                  </div>
-//              )}
-//     </div>
+//             <h1>Count: {count}</h1>
+//             <button onClick = {addOne}> +1 </button>
+//             <button onClick = {minusOne}> -1 </button>
+//             <button onClick = {reset}> reset </button>
+//         </div>
 //     );
-
-//     const appRoot = document.getElementById('app');
-
-
-//     ReactDOM.render(template, appRoot);
+//     ReactDOM.render(templateTwo,appRoot );
 // };
-// renderFunc();
+
+// renderCounterApp();

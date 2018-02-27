@@ -8,6 +8,22 @@ class Counter extends React.Component {
             count: 0
         };
     }
+    componentDidMount() {
+        const stringCount = localStorage.getItem('count');
+        const count = parseInt(stringCount, 10);
+
+        if(!isNaN(count)){
+            this.setState({count });
+        }
+    }
+    componentWillUnmount() {
+
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.count !== this.count){
+            localStorage.setItem('count',this.state.count);
+        }
+    }
     handleAddOne () {
         this.setState((prevState) =>{
             return {
@@ -43,7 +59,10 @@ class Counter extends React.Component {
         );
     }
 }
-ReactDOM.render(<Counter />, document.getElementById('app'));
+// Counter.defaultProps = {
+//     count : 11
+// };
+ReactDOM.render(<Counter count= {17}/>, document.getElementById('app'));
 
 
 
