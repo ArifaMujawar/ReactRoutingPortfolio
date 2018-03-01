@@ -60,3 +60,13 @@ getItem(key),removeItem can be used.
 -To store other data use JSON.Methods like stringify and parse can be used.
 -JSON.stringify converts JSON object or Java Script object to string.
 -JSON.parse converts a string to Java script object
+
+
+There are two types of export
+-named export and default export 
+- named export can be used in two ways, either specify before 
+function name or write a separte export statement with  {}
+-default export can be in named export using functionname followed by as default but 
+while import  write default export outside {} of named import
+Ex : import subtract {add, mul} from './as.js';
+-Other way to expor default export is write as export default functionname;
