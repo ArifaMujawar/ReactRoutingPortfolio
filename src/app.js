@@ -1,11 +1,10 @@
-// import {square} from './utils.js';
 
-// console.log('app.js running');
-// console.log(square(4));
 
-import isSenior ,{isAdult , canDrink} from './person.js';
-console.log(isAdult(21));
+import React from 'react';
+import ReactDOM from 'react-dom';
+import IndecisionApp from './components/IndecisionApp';
+import 'normalize.css/normalize.css';
+import './styles/styles.scss';
 
-console.log(canDrink(18));
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
 
-console.log(isSenior(65));

@@ -70,3 +70,29 @@ function name or write a separte export statement with  {}
 while import  write default export outside {} of named import
 Ex : import subtract {add, mul} from './as.js';
 -Other way to expor default export is write as export default functionname;
+
+-Babel-cli allows us to run babel from commandline and babel-core allows us to run
+ babel through tools like webpack.
+ -Babel-loader is a web pack plugin and it allows us to to teach webpack how to run
+  babel when webpack sees certain files
+Ex of validator
+// import validator from 'validator';
+// console.log(validator.isEmail("tets@gmail.com"));
+
+By setting dev tools proprty we can configure source map to know  error
+
+
+
+
+
+###########################SCSS####
+-To add style to project, we make use of css loader, 
+style loader and add rules to webpack.config file.
+-import specific css file in main js file
+
+-To use SCSS add sass loader.
+-All the partial or supporting files make use of_ before file name but 
+that _ should not be used while importing.
+-BEM (Block Element Modifier) naming convection 
+-entry file is named as styles.scss and partials start with _
+
