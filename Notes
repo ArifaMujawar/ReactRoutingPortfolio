@@ -1,98 +1,15 @@
-// class structure in es6
+-We make use of this line  historyApiFallback: true to fetch index.html all the time.
 
-class className {
-    constructor(parameters){
-        this.parameter = parameter;
-    }
-    functions(){
+-exact={true} because path= "/" matches path ="/create" and others
 
-    }
-    ...
-}
--class name should start with uppercase
--constructor function is called when the instance is created.
--To pass default values to constructor add it like this,
- constructor(name ='Anonymous'){ }
--Instead of using conacatenating operator, we can print anything in ES6 
-like `hello, I;m ${this.name}`;
+-In this part of tutorial we are making use of Client s
 
+-<Link> is used to avoid full page refresh instead javascript swaps things on the fly.
+ Link tag is mostly used inside of application when we are changing from one page to 
+ other,but for google search inside application we do not use link tag
 
+ -<Switch> is used to check for single maching path at each time.
 
-//create an instance of the class using new keyword
-//call their function using instance of that class with function name.
+ -To have Header in all pages add header component outside of Switch tag
 
-
-/******/
-Creating sub Class 
-
-class subclassName extends ParentClassName{
-    constructor (parameters, new parameter){
-        super(parameters of parent class);
-        this.new parameter = parameter
- }   
-}
-
-- !!Undefined returns false value.
-
--React recognises class with
-
---To add many components in one js file use like this
-const jsx = (
-    <div>
-        <Header />
-        <Action />
-        <Options />
-        <AddOption />
-    </div>
-);
-pass jsx to ReactDOM.render();
--To specify default values 
-Ex 
-className.defaultProps = {
-    options : []
-}
-
-
-Local Storage
--stores only string data. Methods like localStorage.setItem(key, value),
-getItem(key),removeItem can be used.
--localStorage.clear() clears all items
--To store other data use JSON.Methods like stringify and parse can be used.
--JSON.stringify converts JSON object or Java Script object to string.
--JSON.parse converts a string to Java script object
-
-
-There are two types of export
--named export and default export 
-- named export can be used in two ways, either specify before 
-function name or write a separte export statement with  {}
--default export can be in named export using functionname followed by as default but 
-while import  write default export outside {} of named import
-Ex : import subtract {add, mul} from './as.js';
--Other way to expor default export is write as export default functionname;
-
--Babel-cli allows us to run babel from commandline and babel-core allows us to run
- babel through tools like webpack.
- -Babel-loader is a web pack plugin and it allows us to to teach webpack how to run
-  babel when webpack sees certain files
-Ex of validator
-// import validator from 'validator';
-// console.log(validator.isEmail("tets@gmail.com"));
-
-By setting dev tools proprty we can configure source map to know  error
-
-
-
-
-
-###########################SCSS####
--To add style to project, we make use of css loader, 
-style loader and add rules to webpack.config file.
--import specific css file in main js file
-
--To use SCSS add sass loader.
--All the partial or supporting files make use of_ before file name but 
-that _ should not be used while importing.
--BEM (Block Element Modifier) naming convection 
--entry file is named as styles.scss and partials start with _
-
+ -<NavLink> gives better experience when compared to <Link> in case of nav
