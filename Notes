@@ -2,7 +2,7 @@
 
 -exact={true} because path= "/" matches path ="/create" and others
 
--In this part of tutorial we are making use of Client s
+-In this part of tutorial we are making use of Client Routing
 
 -<Link> is used to avoid full page refresh instead javascript swaps things on the fly.
  Link tag is mostly used inside of application when we are changing from one page to 
@@ -13,3 +13,4 @@
  -To have Header in all pages add header component outside of Switch tag
 
  -<NavLink> gives better experience when compared to <Link> in case of nav
+
